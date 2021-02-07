@@ -1,0 +1,1 @@
+Do the [quickstart guide](https://developers.google.com/calendar/quickstart/python) to get an api key, and then put it in this folder. Install the dependencies with `pip install -r requirements.txt`. Run the script using `python birthdays.py` with no arguments. You will want to run this periodically, I reccomend cron.
