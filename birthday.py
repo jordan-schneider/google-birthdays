@@ -64,14 +64,13 @@ def main():
 
     now = arrow.utcnow()
     today = now.replace(hour=0, minute=0, second=0, microsecond=0)
-    next_month = today.shift(weeks=4)
 
     events_result = (
         service.events()
         .list(
             calendarId="addressbook#contacts@group.v.calendar.google.com",
             timeMin=today,
-            timeMax=next_month,
+            timeMax=today.shift(weeks=4, days=1),
             maxResults=100,
             singleEvents=True,
             orderBy="startTime",
@@ -89,7 +88,7 @@ def main():
             send_reminder(event, "tomorrow")
         elif date == today.shift(weeks=1):
             send_reminder(event, "next week")
-        elif date == next_month:
+        elif date == today.shift(weeks=4):
             send_reminder(event, "next month")
 
 
